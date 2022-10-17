@@ -19,8 +19,6 @@ const checkAuthInterceptor = (config) => {
         const accessToken = window.localStorage.getItem('accessToken') || ''
         if(accessToken) {
             config.headers.Authorization = 'Bearer ' + accessToken
-
-            
         }
     }
     return config

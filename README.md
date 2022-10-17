@@ -6,7 +6,7 @@
 3. Node.js & NPM Tools
 4. REST API
 
-# base project dengan menggunakan Vue.js Framework dengan konfigurasi berikut:
+# Base project dengan menggunakan Vue.js Framework dengan konfigurasi berikut:
 1. HTML
 2. CSS/SCSS/SASS
 3. NPM
