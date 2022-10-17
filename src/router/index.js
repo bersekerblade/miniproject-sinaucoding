@@ -8,6 +8,35 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  },
+
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../views/DashboardView.vue')
+  },
+
+  {
+    path: '/update/:id',
+    name: 'update',
+    component: () => import('../views/UpdateView.vue')
+  },
+
+  {
+    path: '/create',
+    name: 'create',
+    component: () => import('../views/CreateView.vue')
+  },
+
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/RegisterView.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting

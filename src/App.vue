@@ -1,12 +1,20 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <!-- <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> |
+    <router-link to="/dashboard">Dashoboard</router-link> |
+    <router-link to="/login">Login</router-link> |
+    <router-link to="/register">Register</router-link> -->
   </nav>
   <router-view/>
+
+  <!-- footer -->
+  <div class="footer">
+    <p style="margin:10px;">Marketplace Sinau Coding <img src="./assets/logo-footer-small.png" style="height: 15px;"></p>
+  </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -26,5 +34,15 @@ nav {
       color: #42b983;
     }
   }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: aquamarine;
+  color: blue;
+  text-align: center;
 }
 </style>
