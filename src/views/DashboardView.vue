@@ -1,26 +1,89 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-2 col-md-2 text-center">
-        <div class="card" style="">
-          <img src="../assets/logo-sinau.png" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <p class="card-text">
-              {{resp.profileName}}
-            </p>
+      <div class="col-2 text-center order-first">
+        <div class="card">
+          <img src="../assets/profileUser.jpg" class="card-img-top" alt="..." />
+          <div class="card-body" style="background-color: aqua">
+            <p class="card-text">Hi {{ profileName }} !!</p>
           </div>
         </div>
+
+        <div class="card" style="margin: 5px 0 5px 0">
+          <div class="row">
+            <div class="">
+              <p class="card-header" style="background-color: aqua">Menu</p>
+              <div class="list-group" id="list-tab" role="tablist" style="text-align: left;">
+                <a
+                  class="list-group-item list-group-item-action active"
+                  id="list-profile-list"
+                  data-bs-toggle="list"
+                  @click=""
+                  role="tab"
+                  aria-controls="list-profile"
+                  >Barang</a
+                >
+                <a
+                  class="list-group-item list-group-item-action"
+                  id="list-messages-list"
+                  data-bs-toggle="list"
+                  @click="supplier()"
+                  role="tab"
+                  aria-controls="list-messages"
+                  >Supplier</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin: 5px 0 5px 0">
+          <div class="row">
+            <div class="">
+              <p class="card-header" style="background-color: aqua">Online</p>
+              <div class="list-group" id="list-tab" role="tablist" style="text-align: left;">
+                <li class="list-group-item">Hari : {{ new Date().toLocaleDateString() }}</li>
+                <li class="list-group-item">Jam : {{ new Date().getHours()}} : {{ new Date().getMinutes()}}</li>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
 
-      <div class="col-10 col-md-10">
+      <!-- baris 1 colom 1 -->
+      <div class="col-10 order-last">
         <div class="card">
           <h5
             class="card-header mb"
-            style="text-align: left; background-color: aqua"
+            style="text-align: left; background-color: aqua;"
           >
             Dashoboard
           </h5>
-
+          <div class="row" style="margin: 10px 10px 10px 4px;">
+          <div class="col-6"><h6
+            class=""
+            style="text-align: left;"
+          >
+            Barang
+          </h6>
+          </div>
+          <div class="col-6"><h6
+            class=""
+            style="text-align: right;"
+          >
+          <button
+                    class="btn btn-primary btn-sm"
+                    @click="tambah()"
+                  >
+                    Tambah Barang
+                  </button>
+          </h6>
+          </div>
+          </div>
+          <div class="row" style="margin: 10px;">
           <table class="table table-bordered text-center">
             <thead>
               <tr>
@@ -44,39 +107,39 @@
                 <td>{{ item.supplier.noTelp }}</td>
                 <td>{{ item.supplier.alamat }}</td>
                 <td>
+                  <div class="btn-group" role="group" aria-label="Basic example">
                   <button class="btn btn-danger btn-sm">Hapus</button>
-                  <button class="btn btn-warning btn-sm" @click="update(item.id)">Update</button>
+                  <button
+                    class="btn btn-warning btn-sm"
+                    @click="update(item.id)"
+                  >
+                    Update
+                  </button>
+                  </div>
                 </td>
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
       </div>
+      <!-- baris 1 kol 2 -->
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { onMounted } from 'vue';
-
-
 export default {
-
   data() {
     return {
-      username: "",
-      password: "",
       resp: [],
+      profileName: window.localStorage.getItem("profileName"),
     };
   },
   async mounted() {
     const data = await this.dashboard();
 
     this.resp = data.data.data;
-
-    // const resp = await this.$axios.get('//jsonplaceholder.typicode.com/users')
-    // this.users = resp.data
   },
 
   methods: {
@@ -84,20 +147,31 @@ export default {
       return this.$axios.get("/barang/find-all", {
         params: {
           offset: 0,
-          limit: 10,
+          limit: 6,
         },
       });
     },
-   
-    update(id){
-    this.$router.push({ path: '/update/'+id})
+
+    update(id) {
+      this.$router.push({ path: "/update/" + id });
     },
 
-    delete(id){
-    this.$router.push({ path: '/update/'+id})
-    }
+    delete(id) {
+      this.$router.push({ path: "/update/" + id });
+    },
+
+    tambah() {
+      this.$router.push({ path: "/create" });
+    },
+
+    supplier() {
+      this.$router.push({ path: "/supplier" });
+    },
   },
 };
+
+
+
 </script>
 
 <style></style>

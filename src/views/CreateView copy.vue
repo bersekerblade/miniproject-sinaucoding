@@ -1,14 +1,17 @@
 <template>
-  <div class="container" style="align-items: center;">
-    <div class="row" style="align-items: center; justify-content: space-around;">
-      <div class="col-5 col-md-5 text-center">
-        
-        <div class="card" style="text-align: left;">
+  <div class="container" style="align-items: center">
+    <div class="row" style="align-items: center">
+      <div class="col-6 col-md-6 text-center">
+        <img src="../assets/logo-sinau.png" />
+      </div>
+
+      <div class="col-6 col-md-6">
+        <div class="card" style="text-align: left">
           <h5
             class="card-header mb"
             style="text-align: center; background-color: aqua"
           >
-            Tambah Barang
+            Login
           </h5>
           <div class="card-body">
             <div class="mb-3">
@@ -22,7 +25,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Harga Barang :</label>
+              <label class="form-label">Harga :</label>
               <input
                 type="number"
                 class="form-control"
@@ -32,7 +35,7 @@
               />
             </div>
             <div class="mb-3">
-              <label class="form-label">Stok Barang:</label>
+              <label class="form-label">Stok :</label>
               <input
                 type="text"
                 class="form-control"
@@ -72,7 +75,10 @@
               />
             </div>
             <div class="mb-3" style="text-align: center">
-              <button class="btn btn-primary" @click="create()">Tambah</button>
+              <button class="btn btn-primary" @click="create()">Masuk</button>
+            </div>
+            <div class="mb-3" style="text-align: center">
+              <a href="/register">Belum Punya Akun</a>
             </div>
           </div>
         </div>
@@ -112,7 +118,6 @@ export default {
         .then((resp) => {
             this.$router.push({ path: "/dashboard" });
             console.log(resp)
-            alert('Barang Berhasil Ditambahkan!')
         });
     },
   },

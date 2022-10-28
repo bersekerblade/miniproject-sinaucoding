@@ -56,6 +56,7 @@
             if(resp.data.message == 'LOGIN SUCCESS'){
                 //untuk save token ke local storage
                 window.localStorage.setItem('accessToken',resp.data.data.token)
+                window.localStorage.setItem('profileName', resp.data.data.profileName)
                 this.$router.push({ path: '/dashboard'})
                 alert('Berhasil Login')
             } else {
